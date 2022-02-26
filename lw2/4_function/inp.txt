@@ -1,0 +1,2 @@
+first_name=&last_name=ivanov&=&age=32
+http://localhost:4001/cgi-bin/function.cgi?first_name=michael&last_name=kalinin&age=32
