@@ -7,7 +7,7 @@ function getGetParameter(string $name): ?string
 
 header('Content-Type: text/plain');
 
-$text = getGetParameter('text');
+$text = getGetParameter('text'); // проверка переданных параметров
 if ($text !== null) {
 	$trimmedText = trim($_GET['text']);	// удаление ' ' в начале и в конце строки
 	$arr = explode(' ', $trimmedText);	// запись в массив разбивая по ' '
