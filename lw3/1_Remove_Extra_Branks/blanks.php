@@ -9,9 +9,10 @@ header('Content-Type: text/plain');
 
 $text = getGetParameter('text'); // проверка переданных параметров
 if ($text !== null) {
-	$trimmedText = trim($_GET['text']);	// удаление ' ' в начале и в конце строки
+	$trimmedText = trim($text);	// удаление ' ' в начале и в конце строки
 	$arr = explode(' ', $trimmedText);	// запись в массив разбивая по ' '
 	$tmpArr = [];	// временный массив для записи непробельных символов
+	echo var_dump($arr);
 	for ($i=0; $i < count($arr); $i++) { 
 		if ($arr[$i] !== '')
 			$tmpArr[] = $arr[$i];

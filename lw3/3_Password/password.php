@@ -1,10 +1,5 @@
 <?php
 
-function getGetParameter(string $name): ?string
-{
-    return isset($_GET[$name]) ? $_GET[$name] : null;
-}
-
 header('Content-Type: text/plain');
 $password = getGetParameter('password'); // проверка переданных параметров
 if ($password !== null) {
@@ -20,6 +15,7 @@ if ($password !== null) {
 		$length = strlen($password);
 		if (is_numeric($password)) {
 			$onlyDigits = true;
+			$countDigits = $length;
 		} else {
 			if (ctype_alpha($password)) {
 				$onlyChars = true;
@@ -41,22 +37,31 @@ if ($password !== null) {
 					$countUpper++;
 				$arrForUniqueCount[] = $char;
 			}
-			$passwStrength = 4 * $length;
-			$passwStrength += $countDigits;
-			if ($countUpper)
-				$passwStrength += (($length - $countUpper) * 2);
-			if ($countLower)
-				$passwStrength += (($length - $countLower) * 2);
-			if ($onlyDigits)
-				$passwStrength -= $length;
-			if ($onlyChars)
-				$passwStrength -= $length;
-			$passwStrength -= $notUniqueCount;
-			echo 'Password Strength: ', var_export($passwStrength, true);
 		}
+
+		if ($notUniqueCount > 0)
+			$notUniqueCount++;
+		$passwStrength = 4 * $length;
+		$passwStrength += 4 * $countDigits;
+		if ($countUpper)
+			$passwStrength += (($length - $countUpper) * 2);
+		if ($countLower)
+			$passwStrength += (($length - $countLower) * 2);
+		if ($onlyDigits)
+			$passwStrength -= $length;
+		if ($onlyChars)
+			$passwStrength -= $length;
+		$passwStrength -= $notUniqueCount;
+		echo 'Password Strength: ', var_export($passwStrength, true);
+
 	} else {
 		echo 'Illegal character in password';
 	}
 } else {
 	echo 'No such parameter: password';
+}
+
+function getGetParameter(string $name): ?string
+{
+    return isset($_GET[$name]) ? $_GET[$name] : null;
 }

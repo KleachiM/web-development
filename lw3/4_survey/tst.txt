@@ -1,0 +1,3 @@
+http://localhost:8080/survey.php?email=n1@mmm.ru&first_name=ivan&last_name=ivanov&age=30
+
+http://localhost:8080/survey.php?email=n2@mmm.ru&&last_name=ivanov&age=30
