@@ -5,7 +5,7 @@ header('Content-Type: text/plain');
 $mail = getGetParameter('email');
 
 if ($mail === null) {
-	echo null;
+	echo 'no email';
 } else {
 	$file = "./data/$mail.txt";
 

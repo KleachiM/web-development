@@ -44,10 +44,12 @@ if ($mail === null) {
 		$f = fopen($file, 'w');
 		fwrite($f, $txt);
 		fclose($f);
+		echo 'ok';
 	} else {	// создать новый файл
 		$f = fopen($file, 'w');
 		fwrite($f, "First Name: $firstName\nLast Name: $lastName\nEmail: $mail\nAge: $age");
 		fclose($f);
+		echo 'ok';
 	}
 }
 
@@ -56,8 +58,8 @@ function getGetParameter(string $name): ?string
     return isset($_GET[$name]) ? $_GET[$name] : null;
 }
 
-function getSubstringRegEx(string $pattern, string $text): ?string
-{
-	preg_match($pattern, $text, $matches);
-	return $matches[1];
-}
+// function getSubstringRegEx(string $pattern, string $text): ?string
+// {
+// 	preg_match($pattern, $text, $matches);
+// 	return $matches[1];
+// }
