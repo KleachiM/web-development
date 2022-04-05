@@ -1,0 +1,191 @@
+.main-text
+{
+	font-family: 'Montserrat';
+	font-style: bold;
+	font-weight: 700;
+	font-size: 29px;
+	line-height: 122.33%;
+}
+
+.title-textcolor
+{
+	color: #000000;
+}
+
+.menu-text 
+{
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+	color: #000;
+	padding: 5px;
+}
+
+.substring
+{
+	color: #EE58B6;
+}
+
+.button
+{
+	background: #05090C;
+	/*padding: 10px 34px;*/
+	height: 55px;
+	border: 10px;
+	border-radius: 4.59px;
+}
+
+.button_size-1
+{
+	width: 247px;
+}
+
+.button_size-2
+{
+	width: 332px;
+}
+
+.button__text
+{
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16.46px;
+	line-height: 16px;
+	/* identical to box height, or 103% */
+	text-align: center;
+	padding: 18px;
+	color: #FFFFFF;
+}
+
+.header
+{
+	width: 745px;
+	height: 138.31px;
+	left: 0px;
+	top: 0px;
+	text-align: left;
+}
+
+.header__text
+{
+	color: #000000;
+
+	font-family: Montserrat;
+	font-size: 102px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 122px;
+	letter-spacing: 0em;
+}
+
+.description
+{
+	width: 545px;
+	height: 62px;
+}
+
+.description__text
+{
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 120%;
+	/* or 31px */
+
+	color: #000000B2;
+}
+
+.time-frame
+{
+	width: 299px;
+	height: 145px;
+	background: #000;
+	margin: 50px 0;
+}
+
+.time-frame__image
+{
+	width: 60px;
+	height: 60px;
+}
+
+.frame-text
+{
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 120%;
+	/* or 26px */
+
+	text-align: center;
+
+	color: #FFFFFF;
+}
+
+.notebook-frame
+{
+	width: 337px;
+	height: 132px;
+	background: #000;
+}
+
+.target-frame
+{
+	width: 293px;
+	height: 132px;
+	background: #000;
+	margin: 50px 0;
+}
+
+.illustration-header
+{
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 48px;
+	line-height: 126.06%;
+	color: #000000;
+}
+
+.finances__textblock
+{
+	width: 574px;
+	height: 48px;
+}
+
+.illustration-text
+{
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 135%;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.possibility__header
+{
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 48px;
+	line-height: 59px;
+	color: #000;
+}
+
+.footer
+{
+	width: 203px;
+	height: auto;
+	background-color: #000;
+}
+
+.footer-textcolor
+{
+	color: #FFF;
+}
