@@ -20,24 +20,30 @@ function calc(str) {
 }
 
 function tst(arg) {
-	let arr1 = [1,2,3,4]
-	console.log(arr1.slice(1,-1))
-	let arr2 = arr1.slice(1,-1)
-	console.log(arr2)
+	let arr = arg.split(' ');
+	console.log(arr.length)
 }
 
 function handle(arg) {
 	let arr = arg.split(' ');
 	const operators = ['+', '-', '/', '*'];
 	let operator = null;
+
 	let operand1 = null;
 	let operand2 = null;
+
 	let tmpArrOp1 = [];
 	let tmpArrOp2 = [];
+
 	let searchingOperand1 = false;
 	let searchingOperand2 = false;
-	let bracketsCounter1 = 0;
-	let bracketsCounter2 = 0;
+
+	let openedBracketsCounter1 = 0;
+	let closedBracketsCounter1 = 0;
+
+	let openedBracketsCounter2 = 0;
+	let closedBracketsCounter2 = 0;
+
 	for(let i of arr) {
 		if (operator === null) {
 			if (operators.includes(i)) operator = i;
@@ -46,10 +52,11 @@ function handle(arg) {
 				if (searchingOperand1) { //добавление нужного количества элементов в массив
 					tmpArrOp1.push(i);
 					if (i.startsWith('(')) {
-						bracketsCounter1++;
+						openedBracketsCounter1++;
 					} else {
 						if (i.endsWith(')')) {
-							if (checkBracketsCountForSearchingOperand(i, bracketsCounter1)) {
+							closedBracketsCounter1 = findClosedBrackets(i, closedBracketsCounter1);
+							if (openedBracketsCounter1 === closedBracketsCounter1) {
 								operand1 = handle(tmpArrOp1.join(' ').slice(1,-1));
 							}
 						}
@@ -60,7 +67,7 @@ function handle(arg) {
 						searchingOperand1 = true;
 						if (i.startsWith('(')) {
 							tmpArrOp1.push(i);
-							bracketsCounter1++;
+							openedBracketsCounter1++;
 						} else {
 							console.log('bad input');
 							return null; //начинается не с '(' и это не число
@@ -68,33 +75,44 @@ function handle(arg) {
 					}
 				}
 			} else { // поиск 2 операнда
-				if (searchingOperand2) { //добавление нужного количества элементов в массив
-					tmpArrOp2.push(i);
-					if (i.startsWith('(')) {
-						bracketsCounter2++;
+				if (!operand2){
+					if (searchingOperand2) { //добавление нужного количества элементов в массив
+						tmpArrOp2.push(i);
+						if (i.startsWith('(')) {
+							openedBracketsCounter2++;
+						} else {
+							if (i.endsWith(')')) {
+								closedBracketsCounter2 = findClosedBrackets(i, closedBracketsCounter2);
+								if (openedBracketsCounter2 === closedBracketsCounter2) {
+									operand2 = handle(tmpArrOp2.join(' ').slice(1,-1));
+								}
+							}
+						}
 					} else {
-						if (i.endsWith(')')) {
-							if (checkBracketsCountForSearchingOperand(i, bracketsCounter2)) {
-								operand2 = handle(tmpArrOp2.join(' ').slice(1,-1));
+						operand2 = parseFloat(i);
+						if (!operand2) {
+							searchingOperand2 = true;
+							if (i.startsWith('(')) {
+								tmpArrOp2.push(i);
+								openedBracketsCounter2++;
+							} else {
+								console.log('bad input');
+								return null; //начинается не с '(' и это не число
 							}
 						}
 					}
-				} else {
-					operand2 = parseFloat(i);
-					if (!operand2) {
-						searchingOperand2 = true;
-						if (i.startsWith('(')) {
-							tmpArrOp2.push(i);
-							bracketsCounter2++;
-						} else {
-							console.log('bad input');
-							return null; //начинается не с '(' и это не число
-						}
-					}
+				} else { // найден 2 операнд, если остались элементы в массиве - ошибка
+					console.log('too much arguments');
+					return null;
 				}
+				
 			}
 		}
 	}
+	// if (operand3) {
+	// 	console.log('bad count of operands');
+	// 	return null;
+	// }
 	return execOperation(operator, operand1, operand2);
 }
 
@@ -126,20 +144,11 @@ function execOperation(operator, operand1, operand2) {
 	}
 }
 
-function checkBracketsCountForSearchingOperand(arrElement, bracketsCount) {
-	let tmpCounter = 0;
+function findClosedBrackets(arrElement, closedBracketsCounter) {
 	for(let i = arrElement.length - 1; i >= 0; i--) {
-		if (arrElement[i] === ')') {
-			tmpCounter++;
-		} else {
-			break;
-		}
+		if (arrElement[i] === ')') closedBracketsCounter++;
 	}
-	if (tmpCounter === bracketsCount) {
-		return true;
-	} else {
-		return false;
-	}
+	return closedBracketsCounter;
 }
 
 function checkBracketsCount(arg) {
