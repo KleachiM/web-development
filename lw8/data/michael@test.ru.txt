@@ -1,0 +1,3 @@
+Email: michael@test.ru
+Имя: michael
+Деятельность: designer
