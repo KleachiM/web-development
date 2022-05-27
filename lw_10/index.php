@@ -150,4 +150,5 @@
 			<img src="./images/dont_do_l.svg">
 		</div>
 	</section>
+	<script src="./js/popup.js"></script>
 </body>
